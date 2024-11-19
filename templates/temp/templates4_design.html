@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Announcement Newsletter</title>
+    <meta name="description" content="At SwiftSend, we understand the importance of seamless communication for businesses of all sizes. That's why we've developed a powerful app that allows you to effortlessly send emails and SMS messages with just a few clicks, whether you're a large corporation or a small startup.">
+    <meta property="og:description" content="At SwiftSend, we understand the importance of seamless communication for businesses of all sizes. That's why we've developed a powerful app that allows you to effortlessly send emails and SMS messages with just a few clicks, whether you're a large corporation or a small startup.">    <link rel="shortcut icon" href="{% static 'assets/favicon.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon.png' %}">
+    <meta name="theme-color" content="#3063A0">
+    <style>
+        /* CSS styles for email content */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .contact-details {
+            margin-top: 30px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .contact-details p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{template_instance.title}}</h1>
+        <div class="banner">
+            <img src="{{template_instance.banner.url}}" alt="Sample Banner">
+        </div>
+        <p>{{template_instance.deartext}},</p>
+        {% for template4_paragraph in template4_paragraph %}
+        <p>{{template4_paragraph.parapgrah}}</p>
+        {% endfor %}
+        <div class="contact-details">
+            <h3>Contact Us</h3>
+            <p>Email: {{template_instance.email}}</p>
+            <p>Phone: {{template_instance.phone}}</p>
+            <p>Address: {{template_instance.address}}</p>
+        </div>
+        <p>Best regards,<br> {{company_instance.companyname}}</p>
+    </div>
+</body>
+</html>

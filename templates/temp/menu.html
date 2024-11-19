@@ -1,0 +1,91 @@
+{% load static %}
+<div class="nav-scroller border-bottom">
+  <!-- .nav-tabs -->
+  <ul class="nav nav-tabs">
+
+    {% if "/add" in request.path %}
+    <li class="nav-item">
+      <a class="nav-link active"  href="/add">NEW USER</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link"  href="/add">NEW USER</a>
+    </li>
+
+    {% endif %}
+
+    {% if "/send_sms" in request.path %}
+    <li class="nav-item">
+      <a class="nav-link active"  href="/send_sms">SMS</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link"  href="/send_sms">SMS</a>
+    </li>
+    {% endif %}
+  
+
+
+    {% if "/send_email" in request.path %}
+    <li class="nav-item">
+      <a class="nav-link active"  href="/send_email">SEND EMAIL</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link"  href="/send_email">SEND EMAIL</a>
+    </li>
+    {% endif %}
+
+    {% if "/template_galery" in request.path %}
+    <li class="nav-item">
+      <a class="nav-link active"  href="/template_galery">TEMPLATE GALARY</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link"  href="/template_galery">TEMPLATE GALARY</a>
+    </li>
+    {% endif %}
+
+
+    {% comment %} {% if "/schedule_send_sms" in request.path %}
+    <li class="nav-item">
+      <a class="nav-link active"  href="/schedule_send_sms">SCHEDULE SMS</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link"  href="/schedule_send_sms">SCHEDULE SMS</a>
+    </li>
+    {% endif %} {% endcomment %}
+
+    {% comment %} {% if "/schedule__send_email" in request.path %}
+    <li class="nav-item">
+      <a class="nav-link active"  href="/schedule__send_email">SCHEDULE EMAIL</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link"  href="/schedule__send_email">SCHEDULE EMAIL</a>
+    </li>
+    {% endif %} {% endcomment %}
+
+    {% if "/users" in request.path %}
+    <li class="nav-item">
+      <a class="nav-link active"  href="/users">USER MANAGEMENT </a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link"  href="/users">USER MANAGEMENT</a>
+    </li>
+    {% endif %}
+
+    {% if "/import_leads" in request.path %}
+    <li class="nav-item">
+      <a class="nav-link active"   href="/import_leads">IMPORT LEAD </a>
+      {% comment %} onclick="alert('Please read the instructions below on how to import leads')" {% endcomment %}
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link"  href="/import_leads">IMPORT LEAD</a>
+    </li>
+    {% endif %}
+</ul>
+</div><!-- /.nav-scroller -->

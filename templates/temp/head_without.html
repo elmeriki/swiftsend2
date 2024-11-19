@@ -1,0 +1,37 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Swiftsend | Your Ultimate Communication Solution!</title>
+    <meta name="description" content="At SwiftSend, we understand the importance of seamless communication for businesses of all sizes. That's why we've developed a powerful app that allows you to effortlessly send emails and SMS messages with just a few clicks, whether you're a large corporation or a small startup.">
+    <meta property="og:description" content="At SwiftSend, we understand the importance of seamless communication for businesses of all sizes. That's why we've developed a powerful app that allows you to effortlessly send emails and SMS messages with just a few clicks, whether you're a large corporation or a small startup.">
+    <meta property="og:site_name" content="Swiftsend">
+    <meta name="theme-color" content="#3063A0">
+    <link rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'cassets/fg/css/style.css' %}">
+    <link rel="manifest" href="{% static 'cassets/js/__manifest.json' %}">
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+</head>
+<body oncontextmenu="return false;">
+
+    <!-- loader -->
+    <div id="loader">
+        <li>
+        <div class="spinner-border text-dark" role="status"></div>
+        </li>
+        </div>
+    <!-- * loader -->
+{% block content %}
+
+
+<!-- * Content for other pages will be replace here -->
+{% endblock content %}
+{% include 'temp/footer.html' %}
+</body>
+</html>

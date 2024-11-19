@@ -1,0 +1,87 @@
+{% extends "temp/header.html" %}
+{% block title %} Swiftsend Dashboard  {% endblock %}
+{% load static %}
+{% block content %}
+              <!-- .sidebar-section -->
+              <div class="sidebar-section sidebar-section-fill">
+                <h1 class="page-title">
+                  <i class="text-muted "></i></h1>
+                  {% if messages %}
+                  {% for message in messages %}
+                  <div class="col-lg-12">
+                    <div class="alert alert-primary alert-dismissible fade show">
+                      <button type="button" class="close" data-dismiss="alert">x</button> <strong>Hi, </strong> {{message}} <a href="#" class="alert-link"> </a>. </div>
+                  </div><!-- /grid column -->     
+                  {% endfor %}
+
+                  {% else %}
+                <!-- grid column -->
+           
+                  {% endif %}
+                {% include 'temp/menu.html' %}
+               <br>
+                <div class="list-group-item-body">
+                  <p class="list-group-item-title text-danger"> <strong>USER CUSTOMER MANAGEMENT</strong> </p>
+                  <hr>
+                </div><!-- /.list-group-item-body -->
+                      <!-- .input-group -->
+                 
+                {% for list_of_all_users in page_obj %}
+          
+                  <!-- .card -->
+                  <div class="card mb-2">
+                    <!-- .card-body -->
+                    <div class="card-body">
+                      <!-- grid row -->
+                      <div class="row align-items-center">
+                        <!-- grid column -->
+                        <div class="col-auto">
+                          <a href="/user_info/{{list_of_all_users.id}}" class="user-avatar user-avatar-lg"><img src="{% static 'assets/images/avatars/profile.jpg' %}" alt=""> <span class="avatar-badge online" title="online"></span></a>
+                        </div><!-- /grid column -->
+                        <!-- grid column -->
+                        <div class="col">
+                          <h3 class="card-title">
+                            <a href="/user_info/{{list_of_all_users.id}}">{{list_of_all_users.first_name}} {{list_of_all_users.last_name}}</a> <small class="text-muted">{{list_of_all_users.date_joined | timesince}} ago</small>
+                          </h3>
+                          <h6 class="card-subtitle text-muted">{{list_of_all_users.email}}</h6>
+                        </div><!-- /grid column -->
+                        <!-- /grid column -->
+                        <div class="col-auto">
+                          <button type="button" class="btn btn-icon btn-secondary mr-1" data-toggle="tooltip" title="Send SMS"><a href="/send_sms"><i class="far fa-comment-alt"></i></a></button> <!-- .dropdown -->
+                          <div class="dropdown d-inline-block">
+                            <button type="button" class="btn btn-icon btn-secondary mr-1" data-toggle="tooltip" title="Send Email"><a href="/send_email"><i class="far fa-envelope"></i></a></button> <!-- .dropdown -->
+                            <div class="dropdown-menu dropdown-menu-right">
+                              <div class="dropdown-arrow"></div><button type="button" class="dropdown-item">Invite to a team</button> <button type="button" class="dropdown-item">Copy member ID</button>
+                              <div class="dropdown-divider"></div><button type="button" class="dropdown-item">Remove</button>
+                            </div>
+                          </div><!-- /.dropdown -->
+                        </div><!-- /grid column -->
+                      </div><!-- /grid row -->
+                    </div><!-- /.card-body -->
+                  </div><!-- /.card -->
+                 
+                {% endfor %}
+                <br>
+                <div class="pagination">
+                  <span class="step-links">
+                      {% if page_obj.has_previous %}
+                          <a class="btn btn-primary btn-sm" href="?page=1">&laquo; First</a>
+                          <a class="btn btn-primary btn-sm" href="?page={{page_obj.previous_page_number }}">Previous</a>
+                      {% endif %}
+              
+                      <span class="current">
+                          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                      </span>
+              
+                      {% if page_obj.has_next %}
+                          <a class="btn btn-primary btn-sm" href="?page={{ page_obj.next_page_number }}">Next</a>
+                          <a class="btn btn-primary btn-sm" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+                      {% endif %}
+                  </span>
+              </div>
+              </div><!-- /.page-section -->
+            </div><!-- /.page-inner -->
+
+              </div><!-- /.sidebar-section -->
+              
+{% endblock %}

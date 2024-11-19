@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Event Email</title>
+    <meta name="description" content="At SwiftSend, we understand the importance of seamless communication for businesses of all sizes. That's why we've developed a powerful app that allows you to effortlessly send emails and SMS messages with just a few clicks, whether you're a large corporation or a small startup.">
+    <meta property="og:description" content="At SwiftSend, we understand the importance of seamless communication for businesses of all sizes. That's why we've developed a powerful app that allows you to effortlessly send emails and SMS messages with just a few clicks, whether you're a large corporation or a small startup.">    <link rel="shortcut icon" href="{% static 'assets/favicon.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon.png' %}">
+    <meta name="theme-color" content="#3063A0">
+    <style>
+        /* Reset CSS */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main styles */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            margin-bottom: 20px;
+        }
+
+        .banner img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .content {
+            margin-bottom: 30px;
+        }
+
+        .content h2 {
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #FF4500;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% comment %} <div class="header">
+            <img src="https://placehold.it/400x150" alt="Event Logo">
+        </div> {% endcomment %}
+        
+        <div class="banner">
+            <img src="https://placehold.it/600x200" alt="Demo Banner">
+        </div>
+
+        <div class="content">
+            <h2>Join Us for Our Upcoming Event!</h2>
+            <p>Dear Friend,</p>
+            <p>We are thrilled to invite you to our upcoming event, where we'll be showcasing the latest innovations in technology and networking with industry experts.</p>
+            <p>Event Details:</p>
+            <ul>
+                <li>Date: [Event Date]</li>
+                <li>Time: [Event Time]</li>
+                <li>Location: [Event Location]</li>
+            </ul>
+            <p>Don't miss out on this opportunity to connect with like-minded individuals and gain valuable insights!</p>
+            <a href="#" class="cta-button">Register Now</a>
+        </div>
+
+        <div class="footer">
+            <p>For inquiries, contact us at info@example.com</p>
+        </div>
+    </div>
+</body>
+</html>

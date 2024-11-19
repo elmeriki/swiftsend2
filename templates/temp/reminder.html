@@ -1,0 +1,60 @@
+{% extends "temp/header.html" %}
+{% block title %} Set Email Reminder   {% endblock %}
+{% load static %}
+{% block content %}
+              <!-- .sidebar-section -->
+              <div class="sidebar-section sidebar-section-fill">
+                <h1 class="page-title">
+                  <i class="text-muted "></i></h1>
+                  {% if messages %}
+                  {% for message in messages %}
+                  <div class="col-lg-12">
+                    <div class="alert alert-primary alert-dismissible fade show">
+                      <button type="button" class="close" data-dismiss="alert">x</button> <strong>Hi, </strong> {{message}} <a href="#" class="alert-link"> </a>. </div>
+                  </div><!-- /grid column -->     
+                  {% endfor %}
+                  {% else %}
+                <!-- grid column -->
+           
+                  {% endif %}
+                  
+                {% include 'temp/menu.html' %}
+                <br><br>
+                <div class="list-group-item-body">
+                  <p class="list-group-item-title text-danger"> <strong>SEND GENERAL REMINDER</strong> </p>
+                  <hr>
+                </div><!-- /.list-group-item-body -->
+                <br>
+                    <!-- .card -->
+                    <form action="#" onsubmit="submutbutton.disabled = true; return true;" method="POST">
+                      {% csrf_token %}
+                              <!-- .form-row -->
+                              <div class="form-row">
+                                <br>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnCity">Select Message Channel </label> <select id="cnCity" name="roles" required class="custom-select d-block w-100">
+                                      <option value=""> Choose... </option>
+                                      <option value="Email"> Email</option>
+                                      <option value="Sms"> SMS</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="tf6">Birthday Message</label>
+                                    <textarea class="form-control" id="tf6" placeholder="Type your Birthday message to send to all the selected category of user" rows="3" required></textarea>
+                                  </div>
+                                </div>
+                                </div>
+                            <!-- .modal-footer -->
+                            <div class="modal-footer">
+                              <input type="submit" class="btn btn-primary" onclick="alert('Are you sure you you want to send? ')" name="submutbutton"  value="Send"> 
+                            </div><!-- /.modal-footer -->
+                      </div>
+                    </form><!-- /.modal -->
+
+
+              </div><!-- /.sidebar-section -->
+              
+{% endblock %}

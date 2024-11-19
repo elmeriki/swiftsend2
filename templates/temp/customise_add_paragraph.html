@@ -1,0 +1,70 @@
+{% extends "temp/header.html" %}
+{% block title %} Customise Email  Template  {% endblock %}
+{% load static %}
+{% block content %}
+              <!-- .sidebar-section -->
+              <div class="sidebar-section sidebar-section-fill">
+                <h1 class="page-title">
+                  <i class="text-muted "></i></h1>
+                  {% if messages %}
+                  {% for message in messages %}
+                  <div class="col-lg-12">
+                    <div class="alert alert-primary alert-dismissible fade show">
+                      <button type="button" class="close" data-dismiss="alert">x</button> <strong>Hi, </strong> {{message}} <a href="#" class="alert-link"> </a>. </div>
+                  </div><!-- /grid column -->     
+                  {% endfor %}
+                  {% else %}
+                <!-- grid column -->
+           
+                  {% endif %}
+                  
+                {% include 'temp/menu.html' %}
+                {% if paragraph %}
+                <br><br>
+                <div class="table-responsive">
+                  <table class="table table-hover" style="min-width: 678px">
+                    <thead>
+                      <tr>
+                        <th> paragraph</th>
+                        <th> Date</th>
+                        <th> Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     {% for paragraph in paragraph %}
+                      <tr>
+                        <td class="align-middle">{{paragraph.parapgrah | truncatechars:60}} </td>
+                        <td class="align-middle">{{paragraph.created_at.date}}</td>
+                        <td class="align-middle">
+                          <a href="/delete_template4_paragraph/{{paragraph.id}}">Delete</a>
+                        </td>
+                      </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+                </div><!-- /.table-responsive -->
+                {% else %}
+                <br> <br>
+                {% endif %}
+                    <!-- .card -->
+                    <form action="/save_paragraph_template4/{{id}}" onsubmit="submutbutton.disabled = true; return true;" enctype="multipart/form-data" method="POST">
+                      {% csrf_token %}
+                              <!-- .form-row -->
+                              <div class="form-row">
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="tf6">Add Single or Multiple Paragrah</label>
+                                    <textarea class="form-control" id="tf6" name="parapgrah" placeholder="We are pleased to announce exciting news at [Your Company Name]. Our latest update will revolutionize the way you [brief description of the announcement]." rows="2" required></textarea>
+                                  </div>
+                                </div>
+                            <!-- .modal-footer -->
+                            <div class="modal-footer">
+                              <input type="submit" class="btn btn-primary"   name="submutbutton"  value="Add"> 
+                            </div><!-- /.modal-footer -->
+                      </div>
+                    </form><!-- /.modal -->    
+              </div><!-- /.sidebar-section -->
+
+
+              
+{% endblock %}

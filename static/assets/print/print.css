@@ -1,0 +1,19 @@
+table {
+    border-collapse: collapse;
+    width:100%;
+  }
+  
+  th, td {
+    text-align:center;
+    padding:8px;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  
+  /* tr:nth-child(even) {background-color: #b6bac0;} */
+
+@media print{
+  .hidden-print,
+  .hidden-print * {
+  display: none !important;
+  }
+}

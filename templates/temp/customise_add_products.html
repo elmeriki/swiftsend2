@@ -1,0 +1,107 @@
+{% extends "temp/header.html" %}
+{% block title %} Customise Email  Template  {% endblock %}
+{% load static %}
+{% block content %}
+              <!-- .sidebar-section -->
+              <div class="sidebar-section sidebar-section-fill">
+                <h1 class="page-title">
+                  <i class="text-muted "></i></h1>
+                  {% if messages %}
+                  {% for message in messages %}
+                  <div class="col-lg-12">
+                    <div class="alert alert-primary alert-dismissible fade show">
+                      <button type="button" class="close" data-dismiss="alert">x</button> <strong>Hi, </strong> {{message}} <a href="#" class="alert-link"> </a>. </div>
+                  </div><!-- /grid column -->     
+                  {% endfor %}
+                  {% else %}
+                <!-- grid column -->
+           
+                  {% endif %}
+                  
+                {% include 'temp/menu.html' %}
+                {% if product_list %}
+                <br><br>
+                <div class="table-responsive">
+                  <table class="table table-hover" style="min-width: 678px">
+                    <thead>
+                      <tr>
+                        <th> Product Names </th>
+                        <th> Price </th>
+                        <th> Date</th>
+                        <th> Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     {% for eachproduct_list in product_list %}
+                      <tr>
+                        <td class="align-middle">{{eachproduct_list.productname}} </td>
+                        <td class="align-middle">{{eachproduct_list.symbol}}{{eachproduct_list.price}} </td>
+                        <td class="align-middle">{{eachproduct_list.created_at.date}}</td>
+                        <td class="align-middle">
+                          <a href="/delete_template1_product/{{eachproduct_list.id}}">Delete</a>
+                        </td>
+                      </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+                </div><!-- /.table-responsive -->
+                {% else %}
+                <br> <br>
+                {% endif %}
+                    <!-- .card -->
+                    <form action="/save_product_template1/{{id}}" onsubmit="submutbutton.disabled = true; return true;" enctype="multipart/form-data" method="POST">
+                      {% csrf_token %}
+                              <!-- .form-row -->
+                              <div class="form-row">
+                                <div class="col-md-12">
+                                <div class="form-group">
+                                <label for="tf3">Product Image</label>
+                                <div class="custom-file">
+                                  <input type="file" class="custom-file-input" name="image" id="tf3" required accept="image/png, image/gif, image/jpeg"> 
+                                  <label class="custom-file-label" for="tf3">Image Dimension (400 x 200)</label>
+                                </div>
+                                </div><!-- /.form-group -->
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Product Name</label> 
+                                    <input type="text" name="productname" id="cnContactEmail" placeholder="Product Name" class="form-control" autocomplete="OFF" required>
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="tf6">Product Description</label>
+                                    <textarea class="form-control" id="tf6" name="description" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac purus sit amet nisl tincidunt aliquam." rows="2" required></textarea>
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Symbol </label> 
+                                    <input type="text" name="symbol" id="cnContactEmail" placeholder="ZAR" class="form-control" autocomplete="OFF" required>
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Price</label> 
+                                    <input type="text" name="price" id="cnContactEmail" placeholder="90" class="form-control" autocomplete="OFF" required>
+                                  </div>
+                                </div>
+    
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Link</label> 
+                                    <input type="text" name="website" id="cnContactEmail" placeholder="www.example.com" class="form-control" autocomplete="OFF" required>
+                                  </div>
+                                </div>
+                                </div>
+                            <!-- .modal-footer -->
+                            <div class="modal-footer">
+                              <input type="submit" class="btn btn-primary"   name="submutbutton"  value="Add"> 
+                            </div><!-- /.modal-footer -->
+                      </div>
+                    </form><!-- /.modal -->    
+              </div><!-- /.sidebar-section -->
+
+
+              
+{% endblock %}

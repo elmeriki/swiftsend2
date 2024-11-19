@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftSend | Template Design One</title>
+    <meta name="description" content="At SwiftSend, we understand the importance of seamless communication for businesses of all sizes. That's why we've developed a powerful app that allows you to effortlessly send emails and SMS messages with just a few clicks, whether you're a large corporation or a small startup.">
+    <meta property="og:description" content="At SwiftSend, we understand the importance of seamless communication for businesses of all sizes. That's why we've developed a powerful app that allows you to effortlessly send emails and SMS messages with just a few clicks, whether you're a large corporation or a small startup.">    <link rel="shortcut icon" href="{% static 'assets/favicon.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon.png' %}">
+    <meta name="theme-color" content="#3063A0">
+    <style>
+        /* Reset CSS */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main styles */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .company-info {
+            margin-bottom: 30px;
+        }
+
+        .company-info h2 {
+            margin-bottom: 10px;
+        }
+
+        .product-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .product-item {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #FF4500;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #FF4500;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{template_instance.banner.url}}" alt="Company Logo">
+        </div>
+        
+        <div class="company-info">
+            <h2>{{template_instance.title}}</h2>
+            <p>{{template_instance.abouttext}}</p>
+            <p>{{template_instance.moreinfo}}: <a href="{{template_instance.websites}}">{{template_instance.websites}}</a></p>
+        </div>
+
+        <h2>{{template_instance.productitle}}</h2>
+        
+        <ul class="product-list">
+            {% for eachtemplate1_product_list in template1_product_list %}
+            <li class="product-item">
+                <img src="{{eachtemplate1_product_list.productimage.url}}" alt="Product 1 Image">
+                <div class="product-info">
+                    <h3 class="product-title">{{eachtemplate1_product_list.productname}}</h3>
+                    <p class="product-description">{{eachtemplate1_product_list.productdesc}}</p>
+                    <p class="product-price">{{eachtemplate1_product_list.symbol | upper}}{{eachtemplate1_product_list.price}}</p>
+                    <a href="{{eachtemplate1_product_list.link}}" target="blank_" class="cta-button">Shop Now</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="footer">
+            <p>{{template_instance.moreinfo}}</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+{% extends "temp/header.html" %}
+{% block title %} Administrator Profile   {% endblock %}
+{% load static %}
+{% block content %}
+              <!-- .sidebar-section -->
+              <div class="sidebar-section sidebar-section-fill">
+                <h1 class="page-title">
+                  <i class="text-muted "></i></h1>
+                  {% if messages %}
+                  {% for message in messages %}
+                  <div class="col-lg-12">
+                    <div class="alert alert-primary alert-dismissible fade show">
+                      <button type="button" class="close" data-dismiss="alert">x</button> <strong>Hi, </strong> {{message}} <a href="#" class="alert-link"> </a>. </div>
+                  </div><!-- /grid column -->     
+                  {% endfor %}
+                  {% else %}
+                <!-- grid column -->
+           
+                  {% endif %}
+                  
+                {% include 'temp/menu.html' %}
+                <br>
+                  <!-- grid column -->
+                    <div class="col-lg-12">
+                        <!-- .card -->
+                        <div class="card card-fluid">
+                          <h6 class="card-header"> Company Settings </h6><!-- .card-body -->
+                          <div class="card-body">
+                            <!-- .media -->
+                            <div class="media mb-3">
+                              <!-- avatar -->
+                              <div class="user-avatar user-avatar-xl fileinput-button">
+                                <div class="fileinput-button-label"> Add Logo  </div><img src="{% static 'assets/images/avatars/profile.jpg' %}" alt=""> 
+                                <input id="fileupload-avatar" type="file" name="avatar">
+                              </div><!-- /avatar -->
+                              <!-- .media-body -->
+                              <div class="media-body pl-3">
+                                <h3 class="card-title">Welcome {{admin_instance.first_name}} </h3>
+                                <h6 class="card-subtitle text-muted"> Click the current avatar to change to your company logo. </h6>
+                                <p class="card-text">
+                                  <small class="text-danger">JPG, GIF or PNG 400x400, &lt; 2 MB.</small>
+                                </p><!-- The avatar upload progress bar -->
+                                <div id="progress-avatar" class="progress progress-xs fade">
+                                  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div><!-- /avatar upload progress bar -->
+                              </div><!-- /.media-body -->
+                            </div><!-- /.media -->
+                            <!-- form -->
+                            <form action="/update_profile" method="POST"  autocomplete="OFF" enctype="multipart/form-data">
+                                {% csrf_token %}
+                              <!-- form row -->
+                              <div class="form-row">
+                                <!-- form column -->
+                                <label for="input01" class="col-md-3">Chane Logo</label> <!-- /form column -->
+                                <!-- form column -->
+                                <div class="col-md-9 mb-3">
+                                  <div class="custom-file">
+                                    <input type="file" accept="image/png, image/gif, image/jpeg" class="custom-file-input" name="logo" id="input01" > <label class="custom-file-label" for="input01">Update Logo</label>
+                                  </div><small class="text-muted">Upload a new cover image, JPG 1200x300</small>
+                                </div><!-- /form column -->
+                              </div><!-- /form row -->
+                              <!-- form row -->
+                              <div class="form-row">
+                                <!-- form column -->
+                                <label for="input02" class="col-md-3">Company Name</label> <!-- /form column -->
+                                <!-- form column -->
+                                <div class="col-md-9 mb-3">
+                                  <input type="text" class="form-control" name="companyname" id="input02" value="{{admin_instance.companyname}}">
+                                </div><!-- /form column -->
+                              </div><!-- /form row -->
+                              <div class="form-row">
+                                <!-- form column -->
+                                <label for="input02" class="col-md-3">Reg No</label> <!-- /form column -->
+                                <!-- form column -->
+                                <div class="col-md-9 mb-3">
+                                  <input type="text" class="form-control" name="reg" id="input02" value="{{admin_instance.reg}}">
+                                </div><!-- /form column -->
+                              </div><!-- /form row -->
+                              <div class="form-row">
+                                <!-- form column -->
+                                <label for="input02" class="col-md-3">Tax No</label> <!-- /form column -->
+                                <!-- form column -->
+                                <div class="col-md-9 mb-3">
+                                  <input type="text" class="form-control" name="tax" id="input02" value="{{admin_instance.tax}}">
+                                </div><!-- /form column -->
+                              </div><!-- /form row -->
+                              <div class="form-row">
+                                <!-- form column -->
+                                <label for="input02" class="col-md-3">Telephone/Mobile</label> <!-- /form column -->
+                                <!-- form column -->
+                                <div class="col-md-9 mb-3">
+                                  <input type="text" class="form-control" name="tel" id="input02" value="{{admin_instance.tel}}">
+                                </div><!-- /form column -->
+                              </div><!-- /form row -->
+                              <div class="form-row">
+                                <!-- form column -->
+                                <label for="input02" class="col-md-3">Whatsapp</label> <!-- /form column -->
+                                <!-- form column -->
+                                <div class="col-md-9 mb-3">
+                                  <input type="text" class="form-control" name="whatsapp" id="input02" value="{{admin_instance.whatsapp}}">
+                                </div><!-- /form column -->
+                              </div><!-- /form row -->
+                              <div class="form-row">
+                                <!-- form column -->
+                                <label for="input02" class="col-md-3">Website</label> <!-- /form column -->
+                                <!-- form column -->
+                                <div class="col-md-9 mb-3">
+                                  <input type="text" class="form-control" name="website" id="input02" value="{{admin_instance.website}}">
+                                </div><!-- /form column -->
+                              </div><!-- /form row -->
+                              <!-- form row -->
+                              <div class="form-row">
+                                <!-- form column -->
+                                <label for="input03" class="col-md-3">Address</label> <!-- /form column -->
+                                <!-- form column -->
+                                <div class="col-md-9 mb-3">
+                                  <textarea class="form-control" name="address" id="input03">{{admin_instance.address}}</textarea> <small class="text-muted">Appears on your profile page, 300 chars max.</small>
+                                </div><!-- /form column -->
+                              </div><!-- /form row -->
+                              <!-- form row -->
+                              <div class="form-row">
+                                <!-- form column -->
+                                <label for="input04" class="col-md-3">FAQs?</label> <!-- /form column -->
+                                <!-- form column -->
+                                <div class="col-md-9 mb-3">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="input04" checked> <label class="custom-control-label" for="input04">The Company Information above will be used in your email footer or SMS</label>
+                                  </div>
+                                </div><!-- /form column -->
+                              </div><!-- /form row -->
+                              <hr>
+                              <!-- .form-actions -->
+                              <div class="form-actions">
+                                <button type="submit" class="btn btn-primary ml-auto">Update Profile</button>
+                              </div><!-- /.form-actions -->
+                            </form><!-- /form -->
+                          </div><!-- /.card-body -->
+
+              </div><!-- /.sidebar-section -->
+              
+{% endblock %}

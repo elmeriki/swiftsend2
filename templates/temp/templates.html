@@ -1,0 +1,144 @@
+{% extends "temp/header.html" %}
+{% block title %} Email Template  {% endblock %}
+{% load static %}
+{% block content %}
+   
+            <!-- .sidebar-section -->
+            <div class="sidebar-section sidebar-section-fill">
+              <h1 class="page-title">
+                <i class="text-muted "></i></h1>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="col-lg-12">
+                  <div class="alert alert-primary alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">x</button> <strong>Hi, </strong> {{message}} <a href="#" class="alert-link"> </a>. </div>
+                </div><!-- /grid column -->     
+                {% endfor %}
+                {% else %}
+              <!-- grid column -->
+         
+                {% endif %}
+                
+              {% include 'temp/menu.html' %}
+        
+              <!-- .section-block -->
+              <div class="section-block">
+                <h2 class="section-title"> TEMPLATE GALARY </h2>
+                <p class="text-muted"> Browse our templates galery to customised your email easy  </p>
+              </div><!-- /.section-block -->
+              <!-- grid row -->
+              <div class="row pswp-gallery">
+                <!-- grid column -->
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <!-- .card -->
+                  <div class="card card-figure">
+                    <!-- .card-figure -->
+                    <figure class="figure">
+                      <!-- .figure-img -->
+                      <div class="figure-img">
+                        <img class="img-fluid" src="{% static 'assets/images/dummy/img-5.jpg' %}" alt="Card image cap"> <a href="/template1" target="blank_" target="blank_" class="img-link" data-size="600x450"><span class="tile tile-circle bg-danger"><span class="oi oi-eye"></span></span> <span class="img-caption d-none">Image caption goes here</span></a>
+                        <div class="figure-action">
+                          <a href="/customise_template_1" class="btn btn-block btn-sm btn-primary">Customise Template</a>
+                        </div>
+                      </div><!-- /.figure-img -->
+                      <!-- .figure-caption -->
+                      <figcaption class="figure-caption">
+                        <ul class="list-inline text-muted mb-0">
+                          <li class="list-inline-item">
+                            <a href="/template1_draft"><span class="oi oi-grid-three-up"></span></a> <a href="/template1_draft" class="text-dark">  Marketing Products </a></li>
+                          <li class="list-inline-item float-right">
+                            <a href="/template1_draft"><span class="oi oi-envelope-closed"></span></a>
+                          </li>
+                        </ul>
+                      </figcaption><!-- /.figure-caption -->
+                    </figure><!-- /.card-figure -->
+                  </div><!-- /.card -->
+                </div><!-- /grid column -->
+                <!-- grid column -->
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <!-- .card -->
+                  <div class="card card-figure">
+                    <!-- .card-figure -->
+                    <figure class="figure">
+                      <!-- .figure-img -->
+                      <div class="figure-img">
+                        <img class="img-fluid" src="{% static 'assets/images/dummy/img-6.jpg' %}" alt="Card image cap"> <a href="/template2" target="blank_" class="img-link" data-size="600x450"><span class="tile tile-circle bg-danger"><span class="oi oi-eye"></span></span> <span class="img-caption d-none">Image caption goes here</span></a>
+                        <div class="figure-action">
+                          <a href="/customise_template_2" class="btn btn-block btn-sm btn-primary">Customise Template</a>
+                        </div>
+                      </div><!-- /.figure-img -->
+                      <!-- .figure-caption -->
+                      <figcaption class="figure-caption">
+                        <ul class="list-inline text-muted mb-0">
+                          <li class="list-inline-item">
+                            <a href="/template2_draft"><span class="oi oi-grid-three-up"></span></a><a href="/template2_draft" class="text-dark" > Church, School Marketing </a></li>
+                          <li class="list-inline-item float-right">
+                            <a href="/template2_draft"><span class="oi oi-envelope-closed"></span></a>
+                          </li>
+                        </ul>
+                      </figcaption><!-- /.figure-caption -->
+                    </figure><!-- /.card-figure -->
+                  </div><!-- /.card -->
+                </div><!-- /grid column -->
+                <!-- grid column -->
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <!-- .card -->
+                  <div class="card card-figure">
+                    <!-- .card-figure -->
+                    <figure class="figure">
+                      <!-- .figure-img -->
+                      <div class="figure-img">
+                        <img class="img-fluid" src="{% static 'assets/images/dummy/img-2.jpg' %}" alt="Card image cap"> <a href="/template3" target="blank_" class="img-link" data-size="600x450"><span class="tile tile-circle bg-danger"><span class="oi oi-eye"></span></span> <span class="img-caption d-none">Image caption goes here</span></a>
+                        <div class="figure-action">
+                          <a href="/customise_template_3"  class="btn btn-block btn-sm btn-primary">Customise Template</a>
+                        </div>
+                      </div><!-- /.figure-img -->
+                      <!-- .figure-caption -->
+                      <figcaption class="figure-caption">
+                        <ul class="list-inline text-muted mb-0">
+                          <li class="list-inline-item">
+                            <span class="oi oi-grid-three-up"></span> <a href="/template3_draft" class="text-dark"> Event Promo Marketing </a></li>
+                          <li class="list-inline-item float-right">
+                            <a href="/template3_draft"><span class="oi oi-envelope-closed"></span></a>
+                          </li>
+                        </ul>
+                      </figcaption><!-- /.figure-caption -->
+                    </figure><!-- /.card-figure -->
+                  </div><!-- /.card -->
+                </div><!-- /grid column -->
+                <!-- grid column -->
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                  <!-- .card -->
+                  <div class="card card-figure">
+                    <!-- .card-figure -->
+                    <figure class="figure">
+                      <!-- .figure-img -->
+                      <div class="figure-img">
+                        <img class="img-fluid" src="{% static 'assets/images/dummy/img-1.jpg' %}" alt="Card image cap"> <a href="/template4" target="blank_" class="img-link" data-size="600x450"><span class="tile tile-circle bg-danger"><span class="oi oi-eye"></span></span> <span class="img-caption d-none">Image caption goes here</span></a>
+                        <div class="figure-action">
+                          <a href="/customise_template_4" class="btn btn-block btn-sm btn-primary">Customise Template</a>
+                        </div>
+                      </div><!-- /.figure-img -->
+                      <!-- .figure-caption -->
+                      <figcaption class="figure-caption">
+                        <ul class="list-inline text-muted mb-0">
+                          <li class="list-inline-item">
+                            <span class="oi oi-grid-three-up"></span><a href="/template4_draft" class="text-dark"> General Announcement</a></li>
+                          <li class="list-inline-item float-right">
+                            <a href="/template4_draft"><span class="oi oi-envelope-closed"></span></a>
+                          </li>
+                        </ul>
+                      </figcaption><!-- /.figure-caption -->
+                    </figure><!-- /.card-figure -->
+                  </div><!-- /.card -->
+                </div><!-- /grid column -->
+              </div><!-- /grid row -->
+
+
+
+
+                
+            </div><!-- /.sidebar-section -->
+          
+
+{% endblock %}

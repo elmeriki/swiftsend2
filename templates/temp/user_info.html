@@ -1,0 +1,194 @@
+{% extends "temp/header.html" %}
+{% block title %} Customer Info   {% endblock %}
+{% load static %}
+{% block content %}
+              <!-- .sidebar-section -->
+              <div class="sidebar-section sidebar-section-fill">
+                <h1 class="page-title">
+                  <i class="text-muted "></i></h1>
+                {% include 'temp/menu.html' %}
+                <br>
+                <div class="list-group-item-body">
+                  <p class="list-group-item-title text-danger"><strong> CUSTOMER INFO</strong> </p>
+                  <hr>
+                </div><!-- /.list-group-item-body -->
+                <!-- .tab-content -->
+                <div class="tab-content pt-4" id="clientDetailsTabs">
+                  <!-- .tab-pane -->
+                  <div class="tab-pane fade show active" id="client-billing-contact" role="tabpanel" aria-labelledby="client-billing-contact-tab">
+                    <!-- .card -->
+                    <div class="card">
+                      <!-- .card-body -->
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <h2 id="client-billing-contact-tab" class="card-title"> {{first_name | upper}} {{last_name | upper}}  </h2>
+                          <a href="/update_user/{{single_user_instance.id}}"><button type="button" class="btn btn-link">Edit</button></a>
+                        </div>
+                        <address>DOB: {{single_user_instance.birth_date}} <br>
+                        </address>
+                      </div><!-- /.card-body -->
+                    </div><!-- /.card -->
+                    <!-- .card -->
+                    <div class="card mt-4">
+                      <!-- .card-body -->
+                      <div class="card-body">
+                        {% comment %} <h2 class="card-title"> CUSTOMER DATA </h2><!-- .table-responsive --> {% endcomment %}
+                        <div class="table-responsive">
+                          <table class="table table-hover" style="min-width: 678px">
+                            <thead>
+                              <tr>
+                                <th> FULL NAMES </th>
+                                <th> CELL PHONE </th>
+                                <th> EMAIL ADDRESS </th>
+                                <th> DATE CREATED </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="align-middle text-truncate">
+                                  <a href="#" class="tile bg-primary text-white mr-2">{{single_user_instance.first_name | make_list|first }}</a> <a href="#">{{single_user_instance.first_name}} {{single_user_instance.last_name}}</a>
+                                </td>                                
+                                <td class="align-middle"> {{single_user_instance.phone}} </td>
+                                <td class="align-middle"> {{single_user_instance.email}} </td>
+                                <td class="align-middle"> {{single_user_instance.date_joined.date}} </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div><!-- /.table-responsive -->
+                      </div><!-- /.card-body -->
+                      <!-- .card-footer -->
+                      <div class="card-footer">                       
+                        <a href="/update_user/{{single_user_instance.id}}"  onclick="return checkupdate();"  class="card-footer-item"><i class="oi oi-person"></i> Edith</a>
+                        <a href="/delete_user/{{single_user_instance.id}}" onclick="return checkdelete();"  class="card-footer-item"><i class="far fa-trash-alt"></i> Delete</a>
+                      </div><!-- /.card-footer -->
+                    </div><!-- /.card -->
+                  </div><!-- /.tab-pane -->
+              </div><!-- /.sidebar-section -->
+                 
+                  <!-- .tab-pane -->
+                  <div class="tab-pane fade show active" id="client-billing-contact" role="tabpanel" aria-labelledby="client-billing-contact-tab">
+                    <!-- .card -->
+                    <!-- .card -->
+                    <div class="card mt-4">
+                      <!-- .card-body -->
+                      <div class="card-body">
+                        <h2 class="card-title"> RECENT EMAIL</h2><!-- .table-responsive -->
+                        <hr>
+                        <div class="table-responsive">
+                          <table class="table table-hover" style="min-width: 678px">
+                            <thead>
+                              <tr>
+                                <th> STATUS </th>
+                                <th> CONTACT </th>
+                                <th> SUBJECT</th>
+                                <th> DATES </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for email_send_log in single_user_email_log %}
+                              <tr>
+                                
+                               
+                                {% if email_send_log.sent == True %}
+                                <td class="align-middle">
+                                  <span class="badge badge-success">Sent</span>
+                                </td>
+
+                                {% else %}
+                                <td class="align-middle">
+                                  <span class="badge badge-danger">Fail</span>
+                                </td> 
+                                {% endif %}
+
+                                <td class="align-middle"> 
+                                  <a href="#"> 
+                                    {{email_send_log.email}}
+                                  </a>
+                                </td>
+
+                                <td class="align-middle"> {{email_send_log.subject}} </td>
+                                <td class="align-middle"> {{email_send_log.created_at.date}}</td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                        </div><!-- /.table-responsive -->
+                      </div><!-- /.card-body -->
+                    </div><!-- /.card -->
+                  </div><!-- /.tab-pane -->    
+              <!-- .tab-pane -->
+              {% if single_user_sms_log %}
+              <div class="tab-pane fade show active" id="client-billing-contact" role="tabpanel" aria-labelledby="client-billing-contact-tab">
+                <!-- .card -->
+                <!-- .card -->
+                <div class="card mt-4">
+                  <!-- .card-body -->
+                  <div class="card-body">
+                    <h2 class="card-title"> RECENT SMS </h2><!-- .table-responsive -->
+                    <hr>
+                    <div class="table-responsive">
+                      <table class="table table-hover" style="min-width: 678px">
+                        <thead>
+                          <tr>
+                            <th> CUSTOMER NAMES </th>
+                            <th> STATUS </th>
+                            <th> CELL PHONE </th>
+                            <th> DATES </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for single_user_sms_log in single_user_sms_log %}
+                          <tr>
+                            
+                            <td class="align-middle text-truncate">
+                              <a href="#" class="tile bg-pink text-white mr-2">{{ single_user_sms_log.fname | make_list|first }}</a> <a href="#">{{single_user_sms_log.fname}} {{single_user_sms_log.lname}}</a>
+                            </td>
+                            {% if single_user_sms_log.sent == True %}
+                            <td class="align-middle">
+                              <span class="badge badge-success">Sent</span>
+                            </td>
+
+                            {% else %}
+                            <td class="align-middle">
+                              <span class="badge badge-danger">Fail</span>
+                            </td> 
+                            {% endif %}
+
+                            <td class="align-middle"> 
+                              <a href="#"> 
+                                {{single_user_sms_log.phone}}
+                              </a>
+                            </td>
+
+                            <td class="align-middle"> {{single_user_sms_log.created_at.date}}</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div><!-- /.table-responsive -->
+                  </div><!-- /.card-body -->
+                </div><!-- /.card -->
+              </div><!-- /.tab-pane -->    
+              {% else %}
+
+              {% endif %}
+<script>
+  function checkupdate() {
+    if (confirm("Are you sure you want to update?")) {
+      return true
+    }
+    return false
+}
+</script>
+
+<script>
+  function checkdelete() {
+    if (confirm("Are you sure you want to delete?")) {
+      return true
+    }
+    return false
+}
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,117 @@
+{% load static %}
+
+   <!-- App Sidebar -->
+   <div class="modal fade panelbox panelbox-left" id="sidebarPanel" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <!-- profile box -->
+                <div class="profileBox pt-2 pb-2">
+                    {% if userprofilepic %}
+                    {% for profilepic in  userprofilepic%}
+                    <div class="image-wrapper">
+                        <img src="{{profilepic.profilepicture.url}}" alt="image" class="imaged  w36">
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="image-wrapper">
+                        <img src="{% static 'cassets/fg/img/user.png' %}" alt="image" class="imaged  w36">
+                    </div>
+                    {% endif %}
+                    <div class="in">
+                        <strong>{{first_name}}</strong>
+                        <div class="text-muted">{{accountnumber}}</div>
+                    </div>
+                    <a href="#" class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </a>
+                </div>
+
+                <!-- menu -->
+                <div class="listview-title mt-1">Menu</div>
+                <ul class="listview flush transparent no-line image-listview">
+                    <li>
+                        <a href="/customer_transaction_log" class="item">
+                            <div class="icon-box bg-danger">
+                                <ion-icon name="list-circle-outline"></ion-icon>
+                            </div>
+                            <div class="in">
+                                Transactions
+                                <span class="badge badge-danger">1</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/customer_deposits" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="wallet-outline"></ion-icon>
+                            </div>
+                            <div class="in">
+                                Deposit
+                            </div>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="/customer_withdrawal" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="send-outline"></ion-icon>
+                            </div>
+                            <div class="in">
+                              Send Request
+                            </div>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="/customer_withdrawal" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </div>
+                            <div class="in">
+                               Withdrawal
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- * menu -->
+
+                <!-- others -->
+                <div class="listview-title mt-1">Others</div>
+                <ul class="listview flush transparent no-line image-listview">
+                    <li>
+                        <a href="/customer_profile" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="settings-outline"></ion-icon>
+                            </div>
+                            <div class="in">
+                                Account Settings
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_logout" class="item">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </div>
+                            <div class="in">
+                                Log out
+                            </div>
+                        </a>
+                    </li>
+
+
+                </ul>
+                <!-- * others -->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- * App Sidebar -->
+
+</body>
+</html>

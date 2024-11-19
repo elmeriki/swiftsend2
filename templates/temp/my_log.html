@@ -1,0 +1,124 @@
+{% extends "temp/header.html" %}
+{% block title %} My Log  {% endblock %}
+{% load static %}
+{% block content %}
+              <!-- .sidebar-section -->
+              <div class="sidebar-section sidebar-section-fill">
+                <h1 class="page-title">
+                  <i class="text-muted "></i></h1>
+                  {% if messages %}
+                  {% for message in messages %}
+                  <div class="col-lg-12">
+                    <div class="alert alert-primary alert-dismissible fade show">
+                      <button type="button" class="close" data-dismiss="alert">x</button> <strong>Hi, </strong> {{message}} <a href="#" class="alert-link"> </a>. </div>
+                  </div><!-- /grid column -->     
+                  {% endfor %}
+                  {% else %}
+                <!-- grid column -->
+           
+                  {% endif %}
+                  
+                {% include 'temp/menu.html' %}
+                <br>
+                <div class="list-group-item-body">
+                  <p class="list-group-item-title text-danger"> <strong>GENERAL MESSAGES TASK QUEUE</strong> </p>
+                  <hr>
+                </div><!-- /.list-group-item-body -->
+                
+                      <!-- .tab-pane -->
+                      <div class="tab-pane fade show active" id="client-billing-contact" role="tabpanel" aria-labelledby="client-billing-contact-tab">
+                        <!-- .card -->
+                        <!-- .card -->
+                        <div class="card mt-4">
+                          <!-- .card-body -->
+                          <div class="card-body">
+                            {% comment %} <h2 class="card-title text-primary"> <strong>RECENT SENT EMAILS</strong> </h2><!-- .table-responsive --> {% endcomment %}
+                            
+                            <div class="table-responsive">
+                              <table class="table table-hover" style="min-width: 678px">
+                                <thead>
+                                  <tr>
+                                    <th> Message subject </th>
+                                    <th> Message Type </th>
+                                    <th> Queue Status </th>
+                                    <th> Action</th>
+                                    <th> Dates </th>
+                                    <th> Del </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {% for my_log in page_obj %}
+                                  <tr>
+                                    <td class="align-middle">
+                                     {{my_log.subject}}
+                                    </td>
+                                    <td class="align-middle">
+                                      <span class="badge badge-primary">{{my_log.type}}</span>
+                                    </td>
+                                    {% if my_log.status == "0" %}
+                                    <td class="align-middle"> Queue </td>
+                                    {% else %}
+                                    <td class="align-middle text-success"> 
+                                        Completed
+                                    </td>
+                                    {% endif %}
+                                    {% if my_log.status == "1" %}
+                                    <td class="align-middle"> 
+                                      <a href="/my_log_unmark/{{my_log.id}}" class="text-dark"> 
+                                       Unmark Completed
+                                      </a>
+                                    </td>
+                                    {% else %}
+                                    <td class="align-middle"> 
+                                      <a href="/my_log_completed/{{my_log.id}}" class="text-warning" > 
+                                       Mark Completed
+                                      </a>
+                                    </td>
+                                    {% endif %}
+                                    <td class="align-middle"> {{my_log.created_at.date}}</td>
+
+                                    <td class="align-middle"> 
+                                      <a href="/delete_log/{{my_log.id}}" onclick="return deletlog()" name="submutbutton" class="text-danger" > 
+                                       Delete
+                                      </a>
+                                    </td>
+
+                                  </tr>
+                                  {% endfor %}
+                                </tbody>
+                              </table>
+                            </div><!-- /.table-responsive -->
+                          </div><!-- /.card-body -->
+                        </div><!-- /.card -->
+                      </div><!-- /.tab-pane -->
+                
+                      <div class="pagination">
+                        <span class="step-links">
+                            {% if page_obj.has_previous %}
+                                <a class="btn btn-primary btn-sm" href="?page=1">&laquo; First</a>
+                                <a class="btn btn-primary btn-sm" href="?page={{page_obj.previous_page_number }}">Previous</a>
+                            {% endif %}
+                    
+                            <span class="current">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                            </span>
+                    
+                            {% if page_obj.has_next %}
+                                <a class="btn btn-primary btn-sm" href="?page={{ page_obj.next_page_number }}">Next</a>
+                                <a class="btn btn-primary btn-sm" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                    </div><!-- /.page-section -->
+                  </div><!-- /.page-inner -->
+
+              </div><!-- /.sidebar-section -->
+              <script>
+                function deletlog() {
+                  if (confirm("Are you sure you want to delete? ")) {
+                    return true
+                  }
+                  return false
+              }
+              </script>   
+{% endblock %}

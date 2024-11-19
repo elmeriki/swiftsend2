@@ -1,0 +1,108 @@
+{% load static %}
+
+    <!-- Bootstrap -->
+    <script src="{% static 'cassets/fg/js/lib/bootstrap.bundle.min.js'  %}"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Splide -->
+    <script src="{% static 'cassets/fg/js/plugins/splide/splide.min.js'  %}"></script>
+    <!-- Apex Charts -->
+    <script src="{% static 'cassets/fg/js/plugins/apexcharts/apexcharts.min.js' %}"></script>
+    <!-- Base Js File -->
+    <script src="{% static 'cassets/fg/js/base.js' %}"></script>
+    <script>
+
+        var sparklineAreaExampleSuccess1 = {
+            series: [{
+                data: [555, 1222, 777, 888, 555, 888, 999, 1222]
+            }],
+            chart: {
+                type: 'area',
+                width: '100%',
+                height: 70,
+                sparkline: {
+                    enabled: true
+                }
+            },
+            stroke: {
+                width: 2,
+            },
+            colors: ['#1DCC70'],
+            tooltip: {
+                enabled: false
+            }
+        };
+        var sparklineAreaExampleSuccess2 = {
+            series: [{
+                data: [55, 66, 55, 77, 66, 180, 290, 333]
+            }],
+            chart: {
+                type: 'area',
+                width: '100%',
+                height: 70,
+                sparkline: {
+                    enabled: true
+                }
+            },
+            stroke: {
+                width: 2,
+            },
+            colors: ['#1DCC70'],
+            tooltip: {
+                enabled: false
+            }
+        };
+        var sparklineAreaExampleDanger1 = {
+            series: [{
+                data: [2222, 1666, 1444, 1777, 1333, 1111, 777, 666]
+            }],
+            chart: {
+                type: 'area',
+                width: '100%',
+                height: 70,
+                sparkline: {
+                    enabled: true
+                }
+            },
+            stroke: {
+                width: 2,
+            },
+            colors: ['#FF396F'],
+            tooltip: {
+                enabled: false
+            }
+        };
+        var sparklineAreaExampleDanger2 = {
+            series: [{
+                data: [1200, 1444, 2900, 505, 531, 1900, 555, 75]
+            }],
+            chart: {
+                type: 'area',
+                width: '100%',
+                height: 70,
+                sparkline: {
+                    enabled: true
+                }
+            },
+            stroke: {
+                width: 2,
+            },
+            colors: ['#FF396F'],
+            tooltip: {
+                enabled: false
+            }
+        };
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.chart-sparkline-success-1').forEach(chart => new ApexCharts(chart, sparklineAreaExampleSuccess1).render());
+            document.querySelectorAll('.chart-sparkline-success-2').forEach(chart => new ApexCharts(chart, sparklineAreaExampleSuccess2).render());
+            document.querySelectorAll('.chart-sparkline-danger-1').forEach(chart => new ApexCharts(chart, sparklineAreaExampleDanger1).render());
+            document.querySelectorAll('.chart-sparkline-danger-2').forEach(chart => new ApexCharts(chart, sparklineAreaExampleDanger2).render());
+
+        })
+
+    </script>
+
+</body>
+</html>

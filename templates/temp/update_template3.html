@@ -1,0 +1,131 @@
+{% extends "temp/header.html" %}
+{% block title %} Customise Email  Template  {% endblock %}
+{% load static %}
+{% block content %}
+              <!-- .sidebar-section -->
+              <div class="sidebar-section sidebar-section-fill">
+                <h1 class="page-title">
+                  <i class="text-muted "></i></h1>
+                  {% if messages %}
+                  {% for message in messages %}
+                  <div class="col-lg-12">
+                    <div class="alert alert-primary alert-dismissible fade show">
+                      <button type="button" class="close" data-dismiss="alert">x</button> <strong>Hi, </strong> {{message}} <a href="#" class="alert-link"> </a>. </div>
+                  </div><!-- /grid column -->     
+                  {% endfor %}
+                  {% else %}
+                <!-- grid column -->
+           
+                  {% endif %}
+                  
+                {% include 'temp/menu.html' %}
+                <br>
+                <div class="list-group-item-body">
+                  <p class="list-group-item-title text-danger"> <strong>UPDATING TEMPLATE 3</strong> </p>
+                  <hr>
+                </div><!-- /.list-group-item-body -->
+                <br>
+                    <!-- .card -->
+                    <form action="/update_template_3_/{{template_instance.id}}" onsubmit="submutbutton.disabled = true; return true;" enctype="multipart/form-data" method="POST">
+                      {% csrf_token %}
+                              <!-- .form-row -->
+                              <div class="form-row">
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Template name (Also serve as email subject)</label> 
+                                    <input type="text" name="templatename" id="cnContactEmail" value="{{template_instance.templatename}}" class="form-control" autocomplete="OFF">
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                <div class="form-group">
+                                <label for="tf3">Banner</label>
+                                <div class="custom-file">
+                                  <input type="file" class="custom-file-input" name="banner" id="tf3" accept="image/png, image/gif, image/jpeg" required> 
+                                  <label class="custom-file-label" for="tf3">Choose Banner (600 x 200)</label>
+                                </div>
+                                </div><!-- /.form-group -->
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Heading Text</label> 
+                                    <input type="text" name="title" id="cnContactEmail" value="{{template_instance.title}}" class="form-control" autocomplete="OFF" >
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Greeting Text </label> 
+                                    <input type="text" name="greetingtext" id="cnContactEmail" value="{{template_instance.deartext}}" class="form-control" autocomplete="OFF">
+                                  </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="tf6">Description Text</label>
+                                    <textarea class="form-control" id="tf6" name="dectext"  rows="2" required>{{template_instance.abouttext}}</textarea>
+                                  </div>
+                                </div>
+                             
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Event Details: </label> 
+                                    <input type="text" name="eventdetail" id="cnContactEmail" value="{{template_instance.eventheading}}" class="form-control" autocomplete="OFF">
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Date: </label> 
+                                    <input type="text" name="date" id="cnContactEmail" value="{{template_instance.date}}" class="form-control" autocomplete="OFF">
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Time: </label> 
+                                    <input type="text" name="time" id="cnContactEmail" value="{{template_instance.time}}" class="form-control" autocomplete="OFF">
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Location: </label> 
+                                    <input type="text" name="location" id="cnContactEmail" value="{{template_instance.location}}" class="form-control" autocomplete="OFF">
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="tf6">Don't Miss Out Text</label>
+                                    <textarea class="form-control" id="tf6" name="dontmissout"  rows="2" required>{{template_instance.dontmiss}}</textarea>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">Register Now Link</label> 
+                                    <input type="text" name="link" id="cnContactEmail" value="{{template_instance.link}}" class="form-control" autocomplete="OFF">
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="cnContactEmail">More Info</label> 
+                                    <input type="text" name="moreinfo" id="cnContactEmail" value="{{template_instance.moreinfo}}" class="form-control" autocomplete="OFF" >
+                                  </div>
+                                </div>
+                            <!-- .modal-footer -->
+                            <div class="modal-footer">
+                              <input type="submit" class="btn btn-primary"  onclick="return checksendemail();"  name="submutbutton"  value="Update"> 
+                            </div><!-- /.modal-footer -->
+                      </div>
+                    </form><!-- /.modal -->
+
+
+              </div><!-- /.sidebar-section -->
+
+
+              <script>
+                function checksendemail() {
+                  if (confirm("Are you sure you want to create template? ")) {
+                    return true
+                  }
+                  return false
+              }
+              </script>
+              
+{% endblock %}

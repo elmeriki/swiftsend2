@@ -1,0 +1,102 @@
+{% extends "temp/header.html" %}
+{% block title %} Sms Log   {% endblock %}
+{% load static %}
+{% block content %}
+              <!-- .sidebar-section -->
+              <div class="sidebar-section sidebar-section-fill">
+                <h1 class="page-title">
+                  <i class="text-muted "></i></h1>
+                  {% if messages %}
+                  {% for message in messages %}
+                  <div class="col-lg-12">
+                    <div class="alert alert-primary alert-dismissible fade show">
+                      <button type="button" class="close" data-dismiss="alert">x</button> <strong>Hi, </strong> {{message}} <a href="#" class="alert-link"> </a>. </div>
+                  </div><!-- /grid column -->     
+                  {% endfor %}
+                  {% else %}
+                <!-- grid column -->
+           
+                  {% endif %}
+                  
+                {% include 'temp/menu.html' %}
+                <br>
+                <div class="list-group-item-body">
+                  <p class="list-group-item-title text-danger"> <strong>RECENT SENT SMS MESSAGES ({{sms_log_count}})</strong> </p>
+                  <hr>
+                </div><!-- /.list-group-item-body -->
+                
+                      <!-- .tab-pane -->
+                      <div class="tab-pane fade show active" id="client-billing-contact" role="tabpanel" aria-labelledby="client-billing-contact-tab">
+                        <!-- .card -->
+                        <!-- .card -->
+                        <div class="card mt-4">
+                          <!-- .card-body -->
+                          <div class="card-body">
+                            {% comment %} <h2 class="card-title text-primary"> <strong>LATEST EMAIL SENT</strong> </h2><!-- .table-responsive --> {% endcomment %}
+                            <div class="table-responsive">
+                              <table class="table table-hover" style="min-width: 678px">
+                                <thead>
+                                  <tr>
+                                    <th> CUSTOMER NAMES </th>
+                                    <th> STATUS </th>
+                                    <th> CELL PHONE </th>
+                                    <th> DATES </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {% for sms_log in page_obj %}
+                                  <tr>
+                                    
+                                    <td class="align-middle text-truncate">
+                                      <a href="#" class="tile bg-pink text-white mr-2">{{ sms_log.fname | make_list|first }}</a> {{sms_log.fname}} {{sms_log.lname}}
+                                    </td>
+                                    {% if sms_log.sent == True %}
+                                    <td class="align-middle">
+                                      <span class="badge badge-success">Sent</span>
+                                    </td>
+    
+                                    {% else %}
+                                    <td class="align-middle">
+                                      <span class="badge badge-danger">Fail</span>
+                                    </td> 
+                                    {% endif %}
+    
+                                    <td class="align-middle"> 
+                                       
+                                        {{sms_log.phone}}
+                                      
+                                    </td>
+    
+                                    <td class="align-middle"> {{sms_log.created_at.date}}</td>
+                                  </tr>
+                                  {% endfor %}
+                                </tbody>
+                              </table>
+                            </div><!-- /.table-responsive -->
+                          </div><!-- /.card-body -->
+                        </div><!-- /.card -->
+                      </div><!-- /.tab-pane -->
+
+                      <div class="pagination">
+                        <span class="step-links">
+                            {% if page_obj.has_previous %}
+                                <a class="btn btn-primary btn-sm" href="?page=1">&laquo; First</a>
+                                <a class="btn btn-primary btn-sm" href="?page={{page_obj.previous_page_number }}">Previous</a>
+                            {% endif %}
+                    
+                            <span class="current">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                            </span>
+                    
+                            {% if page_obj.has_next %}
+                                <a class="btn btn-primary btn-sm" href="?page={{ page_obj.next_page_number }}">Next</a>
+                                <a class="btn btn-primary btn-sm" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                    </div><!-- /.page-section -->
+                  </div><!-- /.page-inner -->
+                  
+              </div><!-- /.sidebar-section -->
+            
+{% endblock %}

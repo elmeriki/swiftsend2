@@ -1,0 +1,13 @@
+<!-- send_email.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Email</title>
+</head>
+<body>
+    <form method="post" action="/send_email_view">
+        {% csrf_token %}
+        <input type="submit" value="Send Emails">
+    </form>
+</body>
+</html>

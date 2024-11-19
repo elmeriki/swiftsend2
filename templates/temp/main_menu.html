@@ -1,0 +1,78 @@
+{% load static %}
+
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        {% if "/customer_dashboard" in request.path %}
+        <a href="/customer_dashboard" class="item active">
+            <div class="col">
+                <ion-icon name="home-outline"></ion-icon>
+                <strong>Home</strong>
+            </div>
+        </a>
+        {% else %}
+        <a href="/customer_dashboard" class="item ">
+            <div class="col">
+                <ion-icon name="home-outline"></ion-icon>
+                <strong>Home</strong>
+            </div>
+        </a>
+        {% endif %}
+    
+        {% if "/customer_transaction_log" in request.path %}
+        <a href="/customer_transaction_log" class="item active">
+            <div class="col">
+                <ion-icon name="list-circle-outline"></ion-icon>
+                <strong>Transaction</strong>
+            </div>
+        </a>
+        {% else %}
+        <a href="/customer_transaction_log" class="item">
+            <div class="col">
+                <ion-icon name="list-circle-outline"></ion-icon>
+                <strong>Transaction</strong>
+            </div>
+        </a> 
+        {% endif %}
+
+        {% if "/customer_withdrawal" in request.path %}
+        <a href="/customer_withdrawal" class="item active">
+            <div class="col">
+                <ion-icon name="wallet-outline"></ion-icon>
+                <strong>Withdraw</strong>
+            </div>
+        </a>
+        {% else %}
+        <a href="/customer_withdrawal" class="item">
+            <div class="col">
+                <ion-icon name="wallet-outline"></ion-icon>
+                <strong>Withdraw</strong>
+            </div>
+        </a>
+        {% endif %}
+
+        {% if "/withdrawal_status" in request.path %}
+        <a href="/withdrawal_status" class="item active">
+            <div class="col">
+                <ion-icon name="stats-chart-outline"></ion-icon>
+                <strong>Status</strong>
+            </div>
+        </a>
+        {% else %}
+        <a href="/withdrawal_status" class="item ">
+            <div class="col">
+                <ion-icon name="stats-chart-outline"></ion-icon>
+                <strong>Status</strong>
+            </div>
+        </a>
+        {% endif %}
+
+        <a href="/customer_profile" class="item">
+            <div class="col">
+                <ion-icon name="settings-outline"></ion-icon>
+                <strong>Settings</strong>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+</body>
+</html>
